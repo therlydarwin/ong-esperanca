@@ -921,6 +921,7 @@ footer {
 ========================================== */
 
 @media (max-width: 1024px) {
+
     .hero {
         min-height: 580px;
         margin: 1.5rem;
@@ -946,9 +947,6 @@ footer {
 ========================================== */
 
 @media (max-width: 768px) {
-    .header-content {
-        padding: 0.8rem 1.2rem;
-    }
 
     .main-nav {
         display: none;
@@ -956,66 +954,100 @@ footer {
 
     .menu-toggle {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        border-radius: 3px;
+        background: var(--branco);
     }
 
     .mobile-nav {
-        display: block;
-        background:
-            rgba(2, 8, 23, 0.97);
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition:
-            max-height 0.4s ease,
-            opacity 0.3s ease;
-        border-bottom: 1px solid transparent;
+        display: none;
+        width: 100%;
+        background: var(--fundo);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .mobile-nav.open {
-        max-height: 300px;
-        opacity: 1;
-        border-bottom-color: var(--borda);
+    .mobile-nav.active {
+        display: block;
     }
 
     .mobile-nav ul {
         list-style: none;
-        padding: 0.8rem 1.2rem;
+        margin: 0;
+        padding: 10px 20px;
+    }
+
+    .mobile-nav li {
+        margin: 0;
     }
 
     .mobile-nav a {
         display: block;
-        padding: 0.9rem 0;
-        color: var(--texto);
+        padding: 14px 10px;
+        color: var(--texto-suave);
         text-decoration: none;
         font-weight: 600;
-        border-bottom: 1px solid var(--borda);
+    }
+
+    .mobile-nav a:hover {
+        color: var(--branco);
+        background: rgba(20, 120, 255, 0.08);
+    }
+
+    /* Remove o banner em telas menores */
+    .hero-image {
+        display: none;
+    }
+
+    .hero-overlay {
+        background:
+            radial-gradient(
+                circle at center,
+                rgba(20, 120, 255, 0.15),
+                transparent 65%
+            ),
+            var(--fundo);
     }
 
     .hero {
-        min-height: 650px;
+        min-height: 520px;
+        height: auto;
         margin: 1rem;
-        border-radius: 18px;
     }
 
     .hero-content {
-        padding: 2rem;
+        padding: 3rem 1.5rem;
     }
 
     .hero h1 {
-        font-size: clamp(3rem, 13vw, 4.5rem);
+        font-size: clamp(2.7rem, 12vw, 4.5rem);
     }
 
     .hero-actions {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
+        width: 100%;
     }
 
     .intro-section,
     .mission-section,
     .contact-section {
         grid-template-columns: 1fr;
-        padding: 5rem 1.5rem;
         gap: 2.5rem;
     }
 
@@ -1023,8 +1055,12 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .cards-section {
-        padding: 5rem 1.5rem;
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .participation-options {
+        grid-template-columns: 1fr;
     }
 
     .contact-section address {
@@ -1035,42 +1071,6 @@ footer {
         flex-direction: column;
         align-items: flex-start;
     }
-
-    .page-intro {
-        padding: 4rem 1.5rem 3rem;
-    }
-
-    .project-block {
-        margin: 0 1.5rem 1.5rem;
-        padding: 2rem;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .project-cta {
-        margin: 4rem 1.5rem;
-        padding: 4rem 1.5rem;
-    }
-
-    .form-section {
-        padding: 0 1.5rem 4rem;
-    }
-
-    .form-section form {
-        padding: 2rem 1.5rem;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-group.full {
-        grid-column: auto;
-    }
-
-    .participation-options {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* ==========================================
@@ -1078,6 +1078,11 @@ footer {
 ========================================== */
 
 @media (max-width: 480px) {
+
+    .header-content {
+        padding: 0.9rem 1rem;
+    }
+
     .logo-area span {
         font-size: 1rem;
     }
@@ -1088,11 +1093,12 @@ footer {
     }
 
     .hero {
-        min-height: 600px;
+        min-height: 520px;
+        margin: 0.8rem;
     }
 
     .hero-content {
-        padding: 1.5rem;
+        padding: 2rem 1.2rem;
     }
 
     .hero p {
@@ -1109,9 +1115,27 @@ footer {
     .contact-section {
         padding: 4rem 1.2rem;
     }
+
+    .cards-section {
+        padding: 4rem 1.2rem;
+    }
+
+    .info-card {
+        padding: 2rem;
+    }
+
+    .form-section {
+        padding: 0 1rem 4rem;
+    }
+
+    .form-section form {
+        padding: 1.5rem;
+    }
 }
 
-/* --- CORREÇÃO DEFINITIVA DO PREENCHIMENTO AUTOMÁTICO (AUTOFILL) --- */
+/* ==========================================
+   AUTOFILL
+========================================== */
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -1122,7 +1146,9 @@ input:-webkit-autofill:active {
     background-color: transparent !important;
 }
 
-/* --- CAIXINHA DE SUCESSO SUPER TRANSPARENTE --- */
+/* ==========================================
+   CAIXINHA DE SUCESSO
+========================================== */
 
 .toast-notification {
     position: fixed;
